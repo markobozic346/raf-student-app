@@ -8,31 +8,37 @@ class DataService {
             id: sheet.values[0][0],
             accessorKey: "subject",
             header: sheet.values[0][0],
+            enableColumnFilter: true,
           },
           {
             id: sheet.values[0][1],
             accessorKey: "year",
             header: sheet.values[0][1],
+            enableColumnFilter: true,
           },
           {
             id: sheet.values[0][2],
             accessorKey: "group",
             header: sheet.values[0][2],
+            enableColumnFilter: true,
           },
           {
             id: sheet.values[0][3],
             accessorKey: "zoomUrl",
             header: sheet.values[0][3],
+            enableColumnFilter: false,
           },
           {
             id: sheet.values[0][4],
             accessorKey: "eLearningUrl",
             header: sheet.values[0][4],
+            enableColumnFilter: false,
           },
           {
             id: sheet.values[0][5],
             accessorKey: "note",
             header: sheet.values[0][5],
+            enableColumnFilter: true,
           },
         ],
         sheetData: sheet.values.slice(1).map((row: string) => {
