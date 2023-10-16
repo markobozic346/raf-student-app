@@ -6,6 +6,7 @@ import TRPCProvider from "@/providers/TRPCProvider";
 
 import "./globals.css";
 import { ThemeProvider } from "@/providers/ThemeProvider";
+import { ModeToggle } from "@/components/ui/mode-toggle";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -26,6 +27,7 @@ export default function RootLayout({
           <body className={inter.className}>
             <ThemeProvider enableSystem attribute="class" defaultTheme="system">
               {children}
+              <ModeToggle />
             </ThemeProvider>
           </body>
         </html>
