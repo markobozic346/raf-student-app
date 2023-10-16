@@ -12,25 +12,25 @@ class DataService {
       sheetName: sheet.sheetName,
       columns: [
         columnHelper.accessor("subject", {
-          id: sheet.values[0][0],
+          id: sheet.values[0][0] || "0",
           header: "Predmeti",
           enableColumnFilter: true,
         }),
 
         columnHelper.accessor("year", {
-          id: sheet.values[0][1],
+          id: sheet.values[0][1] || "1",
           header: sheet.values[0][1],
           enableColumnFilter: true,
         }),
 
         columnHelper.accessor("group", {
-          id: sheet.values[0][2],
+          id: sheet.values[0][2] || "2",
           header: sheet.values[0][2],
           enableColumnFilter: true,
         }),
 
         columnHelper.accessor("zoomUrl", {
-          id: sheet.values[0][3],
+          id: sheet.values[0][3] || "3",
           header: sheet.values[0][3],
           cell: (props) =>
             props.getValue() === "" ? null : (
@@ -42,7 +42,7 @@ class DataService {
         }),
 
         columnHelper.accessor("eLearningUrl", {
-          id: sheet.values[0][4],
+          id: sheet.values[0][4] || "4",
           cell: (props) =>
             props.getValue() === "" ? null : (
               <a href={props.getValue()} target="_blank">
@@ -53,7 +53,7 @@ class DataService {
         }),
 
         columnHelper.accessor("note", {
-          id: sheet.values[0][5],
+          id: sheet.values[0][5] || "5",
           header: sheet.values[0][5],
           enableColumnFilter: true,
         }),
