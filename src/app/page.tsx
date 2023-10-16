@@ -1,7 +1,4 @@
-import axios from "axios";
-
 import HomePage from "./_home/HomePage";
-import { Skeleton } from "@/components/ui/skeleton";
 
 const fetchData = async () => {
   const res = await fetch(
@@ -15,9 +12,5 @@ const fetchData = async () => {
 export default async function Home() {
   const data = await fetchData();
 
-  return (
-    <main className="w-full flex min-h-screen flex-col items-center justify-between p-24">
-      <HomePage data={data} />
-    </main>
-  );
+  return <HomePage data={data} />;
 }

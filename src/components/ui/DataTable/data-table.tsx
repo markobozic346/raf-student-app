@@ -16,10 +16,8 @@ import {
   TableHead,
   TableHeader,
 } from "@/components/ui/table";
-
 import Filter from "./Filter";
 import Pagination from "./Pagination";
-import { Button } from "../button";
 
 interface DataTableProps<TData, TValue> {
   columns: ColumnDef<TData, TValue>[];
@@ -43,12 +41,12 @@ export function DataTable<TData, TValue>({
     <>
       <div className="rounded-md border">
         <Table>
-          <TableHeader className="m-16">
+          <TableHeader>
             {table.getHeaderGroups().map((headerGroup) => (
               <TableRow key={headerGroup.id}>
                 {headerGroup.headers.map((header) => {
                   return (
-                    <TableHead key={header.id}>
+                    <TableHead className="p-2 h-12 text-center" key={header.id}>
                       {header.isPlaceholder
                         ? null
                         : flexRender(
@@ -56,8 +54,10 @@ export function DataTable<TData, TValue>({
                             header.getContext()
                           )}
 
-                      {header.column.getCanFilter() && (
+                      {header.column.getCanFilter() ? (
                         <Filter column={header.column} table={table} />
+                      ) : (
+                        <div className="h-9"></div>
                       )}
                     </TableHead>
                   );
