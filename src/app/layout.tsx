@@ -8,6 +8,7 @@ import { ThemeProvider } from "@/providers/ThemeProvider";
 import { ModeToggle } from "@/components/ui/mode-toggle";
 
 import "./globals.css";
+import Header from "@/components/layout/Header";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -27,7 +28,8 @@ export default function RootLayout({
         <html lang="en">
           <body className={inter.className}>
             <ThemeProvider enableSystem attribute="class" defaultTheme="system">
-              <main className="w-full flex min-h-screen flex-col items-center justify-between p-8">
+              <main className="w-full max-w-[1250px] mx-auto flex min-h-screen flex-col items-center py-8 px-20">
+                <Header />
                 {children}
               </main>
               <ModeToggle />
