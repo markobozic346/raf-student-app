@@ -40,11 +40,13 @@ const Header = () => {
         <NavigationMenuList>
           {headerData.map((item) => (
             <NavigationMenuItem key={item.id + "header-link"}>
-              <a href={item.link} target="_blank">
-                <NavigationMenuLink className={navigationMenuTriggerStyle()}>
-                  {item.name}
-                </NavigationMenuLink>
-              </a>
+              <NavigationMenuLink
+                href={item.link}
+                target="_blank"
+                className={navigationMenuTriggerStyle()}
+              >
+                {item.name}
+              </NavigationMenuLink>
             </NavigationMenuItem>
           ))}
         </NavigationMenuList>
