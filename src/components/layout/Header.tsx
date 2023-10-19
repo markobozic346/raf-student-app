@@ -1,4 +1,5 @@
 "use client";
+import { SignInButton, SignedIn, SignedOut, UserButton } from "@clerk/nextjs";
 
 import {
   NavigationMenu,
@@ -7,7 +8,7 @@ import {
   NavigationMenuList,
   navigationMenuTriggerStyle,
 } from "../ui/navigation-menu";
-import { SignInButton, SignedIn, SignedOut, UserButton } from "@clerk/nextjs";
+import { ModeToggle } from "../ui/mode-toggle";
 
 const headerData = [
   {
@@ -34,10 +35,10 @@ const headerData = [
 
 const Header = () => {
   return (
-    <div className="w-full mb-10 flex items-center justify-between">
-      <p>RAF student app</p>
+    <div className="w-full mb-10 flex  flex-col md:flex-row gap-6 md:gap-0 items-center justify-between">
+      <p className="text-blue-500 text-2xl">RAF student app</p>
       <NavigationMenu>
-        <NavigationMenuList>
+        <NavigationMenuList className="flex-col md:flex-row">
           {headerData.map((item) => (
             <NavigationMenuItem key={item.id + "header-link"}>
               <NavigationMenuLink
@@ -52,9 +53,11 @@ const Header = () => {
         </NavigationMenuList>
       </NavigationMenu>
 
+      <ModeToggle />
+
       <div>
         <SignedIn>
-          <UserButton />
+          <UserButton afterSignOutUrl="/" />
         </SignedIn>
         <SignedOut>
           <SignInButton>Prijavi se</SignInButton>
