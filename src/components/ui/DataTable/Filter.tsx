@@ -1,14 +1,10 @@
-import { Column, Table } from "@tanstack/react-table";
+"use client";
+
+import { Column } from "@tanstack/react-table";
 
 import { Input } from "../input";
 
-function Filter({
-  column,
-  table,
-}: {
-  column: Column<any, any>;
-  table: Table<any>;
-}) {
+function Filter({ column }: { column: Column<any, any> }) {
   const columnFilterValue = column.getFilterValue();
 
   return (
