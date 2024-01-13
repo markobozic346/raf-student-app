@@ -2,8 +2,12 @@ import HomePage from "./_home/HomePage";
 
 const fetchData = async () => {
   const res = await fetch(
-    "https://script.google.com/macros/s/AKfycbx-IHfmCLu265z22d38-A-F-ZcQEBSmBesbOa1Z-d8dnZfzoPW36tIvQWygvjRF3hr7/exec",
-    { next: { revalidate: 300 } }
+    "https://script.google.com/macros/s/AKfycbzsz2uYJKlGp04jISeQz9t5_fSFaAEBpdflm9jOxQ_iYSK9_3esG5eXxwilphbmrI1y/exec",
+    {
+      next: {
+        revalidate: 3600,
+      },
+    }
   );
 
   return res.json();
