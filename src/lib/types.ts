@@ -7,6 +7,7 @@ export type Lecture = {
   zoomUrl: string;
   eLearningUrl: string;
   note: string;
+  action?: string;
 };
 
 export type Sheet = {
