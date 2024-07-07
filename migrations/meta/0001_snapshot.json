@@ -1,8 +1,8 @@
 {
   "version": "5",
   "dialect": "pg",
-  "id": "794c17b9-f0ec-4f4c-8123-5f332d466e3d",
-  "prevId": "00000000-0000-0000-0000-000000000000",
+  "id": "8905e36d-236c-4c23-931a-f7410af0e7e4",
+  "prevId": "794c17b9-f0ec-4f4c-8123-5f332d466e3d",
   "tables": {
     "subject_task": {
       "name": "subject_task",
@@ -10,7 +10,7 @@
       "columns": {
         "id": {
           "name": "id",
-          "type": "serial",
+          "type": "varchar",
           "primaryKey": true,
           "notNull": true
         },
