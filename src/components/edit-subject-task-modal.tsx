@@ -44,10 +44,17 @@ const EditSubjectTaskModal = ({ taskId, open, onOpenChange }: Props) => {
   if (isError) return <div>Error, something went wrong</div>;
 
   const handleEdit = () => {
-    console.log(editedTask);
-
     if (!editedTask) {
       toast.error("Morate uneti zadatak.");
+      return;
+    }
+    if (!editedTask.task) {
+      toast.error("Morate uneti zadatak.");
+      return;
+    }
+
+    if (!editedTask.deadline) {
+      toast.error("Morate uneti datum završetka zadatka.");
       return;
     }
 
