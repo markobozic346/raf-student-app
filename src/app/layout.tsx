@@ -30,7 +30,7 @@ export default function RootLayout({
             <ThemeProvider enableSystem attribute="class" defaultTheme="system">
               <main className="w-full lg:max-w-[1250px] md:max-w-[100%] overflow-scroll md:overflow-hidden mx-auto flex min-h-screen flex-col items-center md:py-8 md:px-20 py-4 sm:5">
                 <Header />
-                {children}
+                <div className="mx-4 md:mx-0">{children}</div>
                 <footer className="w-full flex justify-center items-center mt-10">
                   <p className="text-center">
                     Made by RAF{" "}
