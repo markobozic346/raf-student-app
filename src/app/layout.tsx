@@ -6,9 +6,9 @@ import TRPCProvider from "@/providers/TRPCProvider";
 import { ThemeProvider } from "@/providers/ThemeProvider";
 
 import Header from "@/components/layout/Header";
-import { ModeToggle } from "@/components/ui/mode-toggle";
 
 import "./globals.css";
+import { Toaster } from "sonner";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -45,6 +45,7 @@ export default function RootLayout({
                   </p>
                 </footer>
               </main>
+              <Toaster richColors />
             </ThemeProvider>
           </body>
         </html>

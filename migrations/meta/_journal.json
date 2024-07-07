@@ -1,0 +1,20 @@
+{
+  "version": "5",
+  "dialect": "pg",
+  "entries": [
+    {
+      "idx": 0,
+      "version": "5",
+      "when": 1720257409565,
+      "tag": "0000_luxuriant_blacklash",
+      "breakpoints": true
+    },
+    {
+      "idx": 1,
+      "version": "5",
+      "when": 1720270406131,
+      "tag": "0001_bored_paibok",
+      "breakpoints": true
+    }
+  ]
+}

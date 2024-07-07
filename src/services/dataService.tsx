@@ -1,6 +1,8 @@
+import { ExternalLink } from "lucide-react";
 import { createColumnHelper } from "@tanstack/react-table";
 
 import { Button } from "@/components/ui/button";
+import ActionButton from "@/components/action-button";
 import { Lecture, Sheet, TableData } from "@/lib/types";
 
 const columnHelper = createColumnHelper<Lecture>();
@@ -35,7 +37,10 @@ class DataService {
           cell: (props) =>
             props.getValue() === "" ? null : (
               <a href={props.getValue()} target="_blank">
-                <Button className="w-40">Open zoom</Button>
+                <Button className="w-40 bg-blue-600/80 flex justify-center items-center gap-1">
+                  Zoom
+                  <ExternalLink className="w-4" />
+                </Button>
               </a>
             ),
           enableColumnFilter: false,
@@ -46,7 +51,10 @@ class DataService {
           cell: (props) =>
             props.getValue() === "" ? null : (
               <a href={props.getValue()} target="_blank">
-                <Button className="w-40">Open eLearning</Button>
+                <Button className="w-40 flex justify-center items-center gap-1 bg-orange-600/80">
+                  eLearning
+                  <ExternalLink className="w-4" />
+                </Button>
               </a>
             ),
           enableColumnFilter: false,
@@ -56,6 +64,14 @@ class DataService {
           id: "note",
           header: sheet.values[0][5],
           enableColumnFilter: true,
+        }),
+        columnHelper.accessor("action", {
+          id: "action",
+          header: "",
+          enableColumnFilter: false,
+          cell: (props) => {
+            return <ActionButton subject={props.row.original.subject} />;
+          },
         }),
       ],
       sheetData: sheet.values.slice(1).map((row: string[]) => {

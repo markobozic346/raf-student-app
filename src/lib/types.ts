@@ -1,4 +1,6 @@
+import { AppRouter } from "@/server/trpc/routers/root";
 import { ColumnDef } from "@tanstack/react-table";
+import { inferRouterInputs, inferRouterOutputs } from "@trpc/server";
 
 export type Lecture = {
   subject: string;
@@ -7,6 +9,7 @@ export type Lecture = {
   zoomUrl: string;
   eLearningUrl: string;
   note: string;
+  action?: string;
 };
 
 export type Sheet = {
@@ -19,3 +22,8 @@ export type TableData = {
   columns: ColumnDef<Lecture, string>[];
   sheetData: Lecture[];
 };
+
+type RouterInput = inferRouterInputs<AppRouter>;
+type RouterOutput = inferRouterOutputs<AppRouter>;
+
+export type Task = RouterOutput["taskRouter"]["getAllUserTask"][number];
