@@ -27,7 +27,9 @@ const ActionButton = ({ subject }: Props) => {
     <div className="w-full flex justify-center items-center">
       <FilePenLine
         onClick={handleOpen}
-        className={cn("hover:stroke-black/50 hover:cursor-pointer")}
+        className={cn(
+          "hover:stroke-black/50 hover:dark:stroke-white/50 hover:cursor-pointer"
+        )}
       />
       <SubjectTaskModal
         subject={subject}
