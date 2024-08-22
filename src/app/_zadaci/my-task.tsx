@@ -92,8 +92,14 @@ const MyTasks = () => {
     });
   };
 
+  groupedTasks.forEach((group) => {
+    group.tasks.sort((a, b) => {
+      return new Date(a.createdAt).getTime() - new Date(b.createdAt).getTime();
+    });
+  });
+
   return (
-    <div className="flex flex-col gap-4 w-full max-w-2xl">
+    <div className="flex flex-1 flex-col gap-4 w-full">
       <h1 className="text-3xl">Moji zadaci</h1>
       {groupedTasks.map((group) => (
         <div key={group.subject}>
@@ -106,13 +112,13 @@ const MyTasks = () => {
               >
                 <span
                   className={cn("", {
-                    "line-through": task.done,
+                    "line-through mr-2": task.done,
                   })}
                 >
                   {task.task}
                 </span>
                 <span className="flex items-center gap-4">
-                  <p className={cn("text-gray-700")}>
+                  <p className={cn("text-gray-700 dark:text-gray-400")}>
                     {dayjs(task.deadline).fromNow()}
                   </p>
                   {task.done ? <></> : <EditTask taskId={task.id} />}
@@ -120,15 +126,18 @@ const MyTasks = () => {
                     onClick={() => {
                       handleFinishTask(task.id, task.done, task.subject);
                     }}
-                    className={cn("hover:cursor-pointer stroke-black w-6", {
-                      "stroke-green-500": task.done,
-                    })}
+                    className={cn(
+                      "hover:cursor-pointer stroke-black dark:stroke-white w-6",
+                      {
+                        "stroke-green-500 dark:stroke-green-400": task.done,
+                      }
+                    )}
                   />
                   <CircleX
                     onClick={() => {
                       handleDeleteTask(task.id);
                     }}
-                    className="hover:cursor-pointer stroke-red-500 w-6"
+                    className="hover:cursor-pointer stroke-red-500 dark:stroke-red-400 w-6"
                   />
                 </span>
               </li>
@@ -154,7 +163,9 @@ const TaskSubjectHeader = ({ subject }: { subject: string }) => {
     <div className="flex items-center justify-between my-4">
       <p className="text-xl font-medium">{subject}</p>
 
-      <Button onClick={handleOpen}>Dodaj zadatak</Button>
+      <Button variant="secondary" onClick={handleOpen}>
+        Dodaj zadatak
+      </Button>
 
       <SubjectTaskModal
         hideTasks={true}
@@ -181,7 +192,7 @@ const EditTask = ({ taskId }: { taskId: string }) => {
     <>
       <Pencil
         onClick={handleOpen}
-        className="hover:cursor-pointer stroke-black w-6"
+        className="hover:cursor-pointer stroke-black dark:stroke-white w-6"
       />
       <EditSubjectTaskModal
         taskId={taskId}

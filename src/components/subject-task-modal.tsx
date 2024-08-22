@@ -128,6 +128,11 @@ const SubjectTaskModal = ({
     setDeadline(date);
   };
 
+  //sort data by date of creation
+  data?.sort((a, b) => {
+    return new Date(a.createdAt).getTime() - new Date(b.createdAt).getTime();
+  });
+
   return (
     <Dialog open={open} onOpenChange={onOpenChange}>
       <DialogContent>
@@ -158,22 +163,25 @@ const SubjectTaskModal = ({
                 </p>
 
                 <div className="flex gap-2 items-center">
-                  <p className={cn("text-gray-700")}>
+                  <p className={cn("text-gray-700 dark:text-gray-400")}>
                     {dayjs(task.deadline).fromNow()}
                   </p>
                   <Check
                     onClick={() => {
                       handleFinishTask(task.id, task.done);
                     }}
-                    className={cn("hover:cursor-pointer stroke-black w-6", {
-                      "stroke-green-500": task.done,
-                    })}
+                    className={cn(
+                      "hover:cursor-pointer stroke-black dark:stroke-white w-6",
+                      {
+                        "stroke-green-500 dark:stroke-green-400": task.done,
+                      }
+                    )}
                   />
                   <CircleX
                     onClick={() => {
                       handleDeleteTask(task.id);
                     }}
-                    className="hover:cursor-pointer stroke-red-500 w-6"
+                    className="hover:cursor-pointer stroke-red-500 dark:stroke-red-400 w-6"
                   />
                 </div>
               </div>
